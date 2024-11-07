@@ -1,22 +1,24 @@
-"""
-URL configuration for travel_builder project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 
+from application import views
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('',views.create_customer,name='home'),
+    path('create-customer/', views.create_customer, name='create_customer'),
+    path('customer/detail/', views.customer_detail, name='customer_detail'),
+    path('customer/profile/details/', views.customer_detail, name='profile'),
+    path('customer/edit/', views.edit_customer, name='edit_customer'),
+    path('destinations/create/', views.create_destination, name='create_destination'),
+    path('destinations/', views.destination_list, name='destination_list'),
+    path('destinations/edit/<int:pk>/', views.edit_destination, name='edit_destination'),
+    path('destinations/delete/<int:pk>/', views.delete_destination, name='delete_destination'),
+    path('itineraries/new/', views.create_itinerary, name='create_itinerary'),
+    path('destinations/<int:destination_id>/itineraries/', views.itineraries_by_destination, name='itineraries_by_destination'),
+    path('itinerary/<int:itinerary_id>/activities/new/', views.create_activity, name='create_activity'),
+    path('itineraries/<int:itinerary_id>/activities/', views.activities_by_itinerary, name='activities_by_itinerary'),
+    path('activities/create/<int:itinerary_id>/', views.create_activity, name='create_activity'),
+    path('activities/edit/<int:pk>/', views.edit_activity, name='edit_activity'),
+    path('activities/delete/<int:pk>/',views.delete_activity, name='delete_activity'),
 ]
