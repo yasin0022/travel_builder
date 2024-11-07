@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Destination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Delete Destination</h2>
+    <p>Are you sure you want to delete "{{ destination.name }}"?</p>
+
+    <form action="{% url 'delete_destination' destination.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn red">Delete</button>
+        <a href="{% url 'destination_list' %}" class="btn grey">Cancel</a>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

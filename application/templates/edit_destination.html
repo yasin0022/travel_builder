@@ -1,0 +1,38 @@
+<!-- create_destination.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Destination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h4>Edit Destination</h4>
+    <br>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="input-field">
+            <label for="id_name">Name</label>
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+        <div class="input-field">
+            <label for="id_description">Description</label>
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+        <div class="input-field">
+            <label for="id_region">Region</label>
+            {{ form.region }}
+            {{ form.region.errors }}
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Edit Destination</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

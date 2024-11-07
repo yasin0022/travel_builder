@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h4>Destination List</h4>
+    <br>
+    {% if destinations %}
+    <table class="highlight table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Region</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for destination in destinations %}
+                <tr>
+                    <td>{{ destination.name }}</td>
+                    <td>{{ destination.description }}</td>
+                    <td>{{ destination.region }}</td>
+                    <td>
+                        <a href="{% url 'edit_destination' destination.pk %}" class="">Edit</a>
+                        <a href="{% url 'delete_destination' destination.pk %}" class="" style="margin-left:10px;">Delete</a>
+                        <br><br>
+                        <a href="/destinations/{{destination.pk}}/itineraries/" class="btn-small">Itineraries</a>
+
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <center>
+        <a href="{% url 'create_destination' %}" class="btn">Add New Destination</a>
+    </center>
+
+    {% else %}
+    <p>No destinations found for you, please plan new destination</p>
+    <br><br>
+    <a href="{% url 'create_destination' %}" class="btn">Add New Destination</a>
+    {% endif %}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
