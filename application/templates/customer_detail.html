@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h4>Customer Details</h4>
+    <br>
+    <table class="highlight">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ request.user.username }}</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>{{ request.user.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>{{ request.user.last_name }}</td>
+
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ request.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Full Address</th>
+                <td>{{ customer.full_address }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'edit_customer' %}" class="btn">Edit Details</a>
+
+    <a href="{% url 'destination_list' %}" class="btn" style="margin-left:200px;">See Destinations</a>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
